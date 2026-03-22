@@ -264,13 +264,13 @@ export class GerritAPI {
 		url: string,
 		body?: RequestBodyOptions
 	): Promise<ResponseWithBody<string>> {
+		const allowInvalidCerts =
+			getConfiguration().get('gerrit.allowInvalidSSLCerts', false) ||
+			false;
 		return (await got(url, {
 			...body,
 			https: {
-				rejectUnauthorized: !getConfiguration().get(
-					'gerrit.allowInvalidSSLCerts',
-					false
-				),
+				rejectUnauthorized: !allowInvalidCerts,
 			},
 		})) as ResponseWithBody<string>;
 	}
