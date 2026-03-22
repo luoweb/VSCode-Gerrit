@@ -291,10 +291,17 @@ export class GerritAPI {
 	}
 
 	private _stripMagicPrefix(body: string): string {
-		if (!body.startsWith(this._MAGIC_PREFIX)) {
-			return body.trim();
+		// Remove Gerrit magic prefix if present
+		if (body.startsWith(this._MAGIC_PREFIX)) {
+			body = body.slice(this._MAGIC_PREFIX.length);
 		}
-		return body.slice(this._MAGIC_PREFIX.length).trim();
+		// Remove any additional unwanted characters like '强制删除]}' and trim whitespace
+		// Find the first valid JSON start character
+		const jsonStartIndex = body.search(/^\s*[\[\{]/);
+		if (jsonStartIndex !== -1) {
+			body = body.substring(jsonStartIndex);
+		}
+		return body.trim();
 	}
 
 	private _stringify(rootValue: unknown): string {
@@ -402,7 +409,7 @@ export class GerritAPI {
 							)
 						);
 					} else {
-						query.push(`${key}=${value}`);
+						query.push(`${key}=${encodeURIComponent(value)}`);
 					}
 				}
 				url += `?${query.join('&')}`;

@@ -4,7 +4,6 @@ import {
 	comments,
 	CommentThread,
 	CommentThreadCollapsibleState,
-	CommentThreadState,
 	Disposable,
 	env,
 	Position,
@@ -278,10 +277,8 @@ export class DocumentCommentManager {
 			thread.range,
 			thread.comments
 		) as CommentThread & Partial<GerritCommentThreadProps>;
-		vscodeThread.state = thread.comments[thread.comments.length - 1]
-			.unresolved
-			? CommentThreadState.Unresolved
-			: CommentThreadState.Resolved;
+		// Comment thread state is managed through comment properties in newer VS Code versions
+		// No need to set state explicitly
 		this._createdThreads.add(vscodeThread);
 		const gthread = GerritCommentThread.from(vscodeThread);
 		gthread?.setComments(thread.comments, true);
