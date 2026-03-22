@@ -31,7 +31,7 @@
 		"url": "https://github.com/luoweb/VSCode-Gerrit/issues",
 		"email": "awsdfgvhbjn@gmail.com"
 	},
-	"publisher": "luoweb",
+	"publisher": "roweb",
 	"activationEvents": [
 		"onStartupFinished"
 	],
