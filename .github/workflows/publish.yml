@@ -104,7 +104,7 @@ jobs:
         id: create-release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
         with:
           tag_name: ${{ needs.package.outputs.tag }}
           release_name: Release ${{ needs.package.outputs.version }}
@@ -116,4 +116,4 @@ jobs:
         with:
           files: ${{ needs.package.outputs.packageName }}
           release-tag: ${{ needs.package.outputs.tag }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.CI_GITHUB_TOKEN }}
