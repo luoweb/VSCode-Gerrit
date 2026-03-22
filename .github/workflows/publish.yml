@@ -99,6 +99,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: ${{ needs.package.outputs.packageName }}
+          path: .
 
       - name: Create Release
         id: create-release
@@ -112,8 +113,10 @@ jobs:
           prerelease: false
 
       - name: Upload assets to a Release
-        uses: AButler/upload-release-assets@v2.0
+        uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ needs.package.outputs.tag }}
           files: ${{ needs.package.outputs.packageName }}
-          release-tag: ${{ needs.package.outputs.tag }}
-          repo-token: ${{ secrets.CI_GITHUB_TOKEN }}
+          token: ${{ secrets.CI_GITHUB_TOKEN }}
+          repository: luoweb/VSCode-Gerrit
+          prerelease: true
