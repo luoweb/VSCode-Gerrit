@@ -3,7 +3,7 @@
 	"displayName": "%displayName%",
 	"description": "%description%",
 	"l10n": "./i18n",
-	"version": "1.2.61",
+	"version": "1.2.64",
 	"engines": {
 		"vscode": "^1.74.0",
 		"node": ">=14.16.0"

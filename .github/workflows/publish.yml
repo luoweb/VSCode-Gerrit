@@ -46,6 +46,14 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Update package.json version if provided
+        run: |
+          if [ "${{ github.event.inputs.version }}" != "" ]; then
+            node -e "const fs = require('fs'); const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8')); packageJson.version = '${{ github.event.inputs.version }}'; fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2)); console.log('Updated package.json version to: ${{ github.event.inputs.version }}');"
+          else
+            echo "No version provided, using existing version in package.json"
+          fi
+
       - name: Setup package path
         id: setup
         run: |
