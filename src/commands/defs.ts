@@ -211,6 +211,11 @@ export const commands: {
 		icon: '$(git-commit)',
 		inCommandPalette: contextProp('gerrit:connected'),
 	},
+	'gerrit.pushForReviewDirect': {
+		title: 'Push for Review (Direct)',
+		icon: '$(git-commit)',
+		inCommandPalette: contextProp('gerrit:connected'),
+	},
 	'gerrit.rebase': {
 		title: 'Checkout & Rebase',
 		inCommandPalette: false,

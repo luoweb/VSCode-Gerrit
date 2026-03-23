@@ -564,3 +564,146 @@ export async function getCurrentBranch(
 
 	return stdout.trim();
 }
+
+export async function gitPushForReview(
+	gerritRepo: Repository,
+	branchName?: string,
+	pushOptions?: string[]
+): Promise<void> {
+	const config = getConfiguration();
+	const showProgressInNotification = config.get(
+		'gerrit.messages.postReviewNotification',
+		true
+	);
+	
+	const { success, stdout, stderr } = await window.withProgress<{
+		success: boolean;
+		stdout: string;
+		stderr: string;
+	}>(
+		{
+			location: showProgressInNotification
+				? ProgressLocation.Notification
+				: ProgressLocation.SourceControl,
+			title: 'Pushing for review',
+		},
+		async (progress) => {
+			progress.report({
+				message: 'Preparing push',
+				increment: 10,
+			});
+			
+			const uri = gerritRepo.rootUri.fsPath;
+			
+			// 确保工作区干净
+			if (!(await ensureCleanWorkingTree(uri))) {
+				return {
+					success: false,
+					stdout: '',
+					stderr: 'Working tree is not clean',
+				};
+			}
+			
+			progress.report({
+				message: 'Getting current branch',
+				increment: 30,
+			});
+			
+			// 获取当前分支名
+			const currentBranch = await getCurrentBranch(gerritRepo);
+			if (!currentBranch) {
+				return {
+					success: false,
+					stdout: '',
+					stderr: 'Failed to get current branch',
+				};
+			}
+			
+			// 确定推送目标分支
+			const targetBranch = branchName || currentBranch;
+			
+			// 构建推送选项字符串
+			const pushOptionsString = pushOptions && pushOptions.length > 0 
+				? pushOptions.map(option => `--push-option=${option}`).join(' ')
+				: '';
+			
+			progress.report({
+				message: `Pushing to refs/for/${targetBranch}`,
+				increment: 60,
+			});
+			
+			// 执行 git push 命令
+			const result = await tryExecAsync(
+				`git push --progress ${pushOptionsString} "origin" HEAD:refs/for/${targetBranch}`,
+				{
+					cwd: uri,
+					timeout: 30000,
+				}
+			);
+			
+			progress.report({
+				increment: 100,
+			});
+			
+			return {
+				success: result.success,
+				stdout: result.stdout,
+				stderr: result.stderr,
+			};
+		}
+	);
+	
+	if (success) {
+		const config = getConfiguration();
+		if (!config.get('gerrit.messages.postReviewNotification', true)) {
+			return;
+		}
+		
+		const URL_REGEX = /http(s)?[:\w./+]+/g;
+		const url = stdout.match(URL_REGEX)?.[0];
+		const disableMessageOption = 'Disable This Message';
+		
+		if (url) {
+			const viewRemoteOption = 'View Remote';
+			const openReviewPanelOption = 'Open Review Panel';
+			const result = await window.showInformationMessage(
+				`Successfully pushed for review to ${url}`,
+				viewRemoteOption,
+				openReviewPanelOption,
+				disableMessageOption
+			);
+			
+			if (result === viewRemoteOption) {
+				await env.openExternal(Uri.parse(url));
+			} else if (result === openReviewPanelOption) {
+				const changeID = await getCurrentChangeID(gerritRepo);
+				if (changeID) {
+					await ChangeTreeView.openInReview(changeID);
+				}
+			} else if (result === disableMessageOption) {
+				await config.update(
+					'gerrit.messages.postReviewNotification',
+					false,
+					ConfigurationTarget.Global
+				);
+			}
+		} else {
+			if (
+				(await window.showInformationMessage(
+					'Successfully pushed for review',
+					disableMessageOption
+				)) === disableMessageOption
+			) {
+				await config.update(
+					'gerrit.messages.postReviewNotification',
+					false,
+					ConfigurationTarget.Global
+				);
+			}
+		}
+	} else {
+		void window.showErrorMessage(
+			`Git push failed: ${stderr || 'Unknown error'}`
+		);
+	}
+}
