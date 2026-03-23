@@ -43,89 +43,89 @@
 		"commands": [
 			{
 				"command": "gerrit.changeGitRepo",
-				"title": "%commands.changeGitRepo%"
+				"title": "Change git repo"
 			},
 			{
 				"command": "gerrit.maybeDiff",
-				"title": "%commands.maybeDiff%"
+				"title": "Maybe Diff"
 			},
 			{
 				"command": "gerrit.ackCommentThread",
-				"title": "%commands.ackCommentThread%",
+				"title": "Ack",
 				"icon": "$(record)"
 			},
 			{
 				"command": "gerrit.cancelComment",
-				"title": "%commands.cancelComment%"
+				"title": "Cancel"
 			},
 			{
 				"command": "gerrit.checkConnection",
-				"title": "%commands.checkConnection%"
+				"title": "Check Connection"
 			},
 			{
 				"command": "gerrit.checkoutBranch",
-				"title": "%commands.checkoutBranch%",
+				"title": "Checkout Change",
 				"icon": "$(arrow-down)"
 			},
 			{
 				"command": "gerrit.clearSearchResults",
-				"title": "%commands.clearSearchResults%",
+				"title": "Clear search results",
 				"icon": "$(clear-all)"
 			},
 			{
 				"command": "gerrit.configureChangeList",
-				"title": "%commands.configureChangeList%",
+				"title": "Configure filters",
 				"icon": "$(gear)"
 			},
 			{
 				"command": "gerrit.copyCommentLink",
-				"title": "%commands.copyCommentLink%",
+				"title": "Copy weblink to this comment",
 				"icon": "$(link)"
 			},
 			{
 				"command": "gerrit.createCommentResolved",
-				"title": "%commands.createCommentResolved%",
+				"title": "Save (resolved)",
 				"enablement": "!commentIsEmpty"
 			},
 			{
 				"command": "gerrit.createCommentUnresolved",
-				"title": "%commands.createCommentUnresolved%",
+				"title": "Save (unresolved)",
 				"enablement": "!commentIsEmpty"
 			},
 			{
 				"command": "gerrit.deleteComment",
-				"title": "%commands.deleteComment%",
+				"title": "Delete comment",
 				"icon": "$(trash)"
 			},
 			{
 				"command": "gerrit.doneCommentThread",
-				"title": "%commands.doneCommentThread%",
+				"title": "Done",
 				"icon": "$(check)"
 			},
 			{
 				"command": "gerrit.editComment",
-				"title": "%commands.editComment%",
+				"title": "Edit comment",
 				"icon": "$(edit)"
 			},
 			{
 				"command": "gerrit.enterCredentials",
-				"title": "%commands.enterCredentials%"
+				"title": "Enter credentials"
 			},
 			{
 				"command": "gerrit.fetchMore",
-				"title": "%commands.fetchMore%"
+				"title": "Fetch More"
 			},
 			{
 				"command": "gerrit.focusChange",
-				"title": "%commands.focusChange%"
+				"title": "Focus Change In Change List Panel"
 			},
 			{
 				"command": "gerrit.listenForStreamEvents",
-				"title": "%commands.listenForStreamEvents%"
+				"title": "Start listening for Gerrit stream events"
 			},
 			{
 				"command": "gerrit.nextUnresolvedComment",
-				"title": "%commands.nextUnresolvedComment%",
+				"title": "Next Unresolved Comment",
 				"icon": {
 					"dark": "src/images/icons/comment-down-dark.svg",
 					"light": "src/images/icons/comment-down-light.svg"
@@ -133,58 +133,58 @@
 			},
 			{
 				"command": "gerrit.openChangeOnline",
-				"title": "%commands.openChangeOnline%",
+				"title": "Open online",
 				"icon": "$(globe)"
 			},
 			{
 				"command": "gerrit.openChangeSelector",
-				"title": "%commands.openChangeSelector%"
+				"title": "Open Change Selector"
 			},
 			{
 				"command": "gerrit.checkoutChange",
-				"title": "%commands.checkoutChange%"
+				"title": "Checkout change by ID or number"
 			},
 			{
 				"command": "gerrit.openCommentOnline",
-				"title": "%commands.openCommentOnline%",
+				"title": "Open comment on Gerrit",
 				"icon": "$(link-external)"
 			},
 			{
 				"command": "gerrit.openCurrentOnline",
-				"title": "%commands.openCurrentOnline%"
+				"title": "Open Current Change Online"
 			},
 			{
 				"command": "gerrit.openInReview",
-				"title": "%commands.openInReview%",
+				"title": "Open in Review panel",
 				"icon": "$(open-preview)"
 			},
 			{
 				"command": "gerrit.openModified",
-				"title": "%commands.openModified%"
+				"title": "Open Modified File"
 			},
 			{
 				"command": "gerrit.markReviewed",
-				"title": "%commands.markReviewed%"
+				"title": "Mark file as reviewed"
 			},
 			{
 				"command": "gerrit.markUnreviewed",
-				"title": "%commands.markUnreviewed%"
+				"title": "Mark file as unreviewed"
 			},
 			{
 				"command": "gerrit.openOnline",
-				"title": "%commands.openOnline%"
+				"title": "Open file on Gerrit"
 			},
 			{
 				"command": "gerrit.openOriginal",
-				"title": "%commands.openOriginal%"
+				"title": "Open Original File"
 			},
 			{
 				"command": "gerrit.openPatchsetSelector",
-				"title": "%commands.openPatchsetSelector%"
+				"title": "Open Patchset Selector"
 			},
 			{
 				"command": "gerrit.previousUnresolvedComment",
-				"title": "%commands.previousUnresolvedComment%",
+				"title": "Previous Unresolved Comment",
 				"icon": {
 					"dark": "src/images/icons/comment-up-dark.svg",
 					"light": "src/images/icons/comment-up-light.svg"
@@ -192,116 +192,121 @@
 			},
 			{
 				"command": "gerrit.pushForReview",
-				"title": "%commands.pushForReview%",
+				"title": "Push for Review",
+				"icon": "$(git-commit)"
+			},
+			{
+				"command": "gerrit.pushForReviewDirect",
+				"title": "Push for Review (Direct)",
 				"icon": "$(git-commit)"
 			},
 			{
 				"command": "gerrit.rebase",
-				"title": "%commands.rebase%"
+				"title": "Checkout & Rebase"
 			},
 			{
 				"command": "gerrit.rebaseCurrent",
-				"title": "%commands.rebaseCurrent%"
+				"title": "Rebase change"
 			},
 			{
 				"command": "gerrit.recursiveRebase",
-				"title": "%commands.recursiveRebase%"
+				"title": "Checkout & Rebase recursively"
 			},
 			{
 				"command": "gerrit.recursiveRebaseCurrent",
-				"title": "%commands.recursiveRebaseCurrent%"
+				"title": "Checkout & Rebase recursively"
 			},
 			{
 				"command": "gerrit.refreshChanges",
-				"title": "%commands.refreshChanges%",
+				"title": "Refresh changes",
 				"icon": "$(refresh)"
 			},
 			{
 				"command": "gerrit.resetPatchsetSelection",
-				"title": "%commands.resetPatchsetSelection%"
+				"title": "Reset Patchset Selection"
 			},
 			{
 				"command": "gerrit.search",
-				"title": "%commands.search%",
+				"title": "Search",
 				"icon": "$(search)"
 			},
 			{
 				"command": "gerrit.selectActiveView",
-				"title": "%commands.selectActiveView%",
+				"title": "Select Active View",
 				"icon": "$(menu)"
 			},
 			{
 				"command": "gerrit.toggleResolvedOff",
-				"title": "%commands.toggleResolvedOff%"
+				"title": "Unresolve thread"
 			},
 			{
 				"command": "gerrit.toggleResolvedOn",
-				"title": "%commands.toggleResolvedOn%"
+				"title": "Resolve thread"
 			},
 			{
 				"command": "gerrit.quickCheckout",
-				"title": "%commands.quickCheckout%",
+				"title": "Quick Checkout",
 				"icon": "$(history)"
 			},
 			{
 				"command": "gerrit.applyQuickCheckout",
-				"title": "%commands.applyQuickCheckout%",
+				"title": "Apply Quick Checkout (don't drop)",
 				"icon": "$(arrow-down)"
 			},
 			{
 				"command": "gerrit.dropQuickCheckouts",
-				"title": "%commands.dropQuickCheckouts%"
+				"title": "Drop Quick Checkout stashes"
 			},
 			{
 				"command": "gerrit.dropQuickCheckout",
-				"title": "%commands.dropQuickCheckout%",
+				"title": "Drop Quick Checkout Stash",
 				"icon": "$(trash)"
 			},
 			{
 				"command": "gerrit.popQuickCheckout",
-				"title": "%commands.popQuickCheckout%"
+				"title": "Pop Quick Checkout stash (apply and drop)"
 			},
 			{
 				"command": "gerrit.openFileOnGitiles",
-				"title": "%commands.openFileOnGitiles%"
+				"title": "Open file on Gitiles"
 			},
 			{
 				"command": "gerrit.openLineOnGitiles",
-				"title": "%commands.openLineOnGitiles%"
+				"title": "Open line on Gitiles"
 			},
 			{
 				"command": "gerrit.openLineOnGitilesPermalink",
-				"title": "%commands.openLineOnGitilesPermalink%"
+				"title": "Open line on Gitiles (permalink)"
 			},
 			{
 				"command": "cmd.gerrit.changeGitRepo",
-				"title": "%commands.changeGitRepo%"
+				"title": "Gerrit: Change git repo"
 			},
 			{
 				"command": "cmd.gerrit.checkConnection",
-				"title": "%commands.checkConnection%"
+				"title": "Gerrit: Check Connection"
 			},
 			{
 				"command": "cmd.gerrit.clearSearchResults",
-				"title": "%commands.clearSearchResults%",
+				"title": "Gerrit: Clear search results",
 				"icon": "$(clear-all)"
 			},
 			{
 				"command": "cmd.gerrit.configureChangeList",
-				"title": "%commands.configureChangeList%",
+				"title": "Gerrit: Configure filters",
 				"icon": "$(gear)"
 			},
 			{
 				"command": "cmd.gerrit.enterCredentials",
-				"title": "%commands.enterCredentials%"
+				"title": "Gerrit: Enter credentials"
 			},
 			{
 				"command": "cmd.gerrit.listenForStreamEvents",
-				"title": "%commands.listenForStreamEvents%"
+				"title": "Gerrit: Start listening for Gerrit stream events"
 			},
 			{
 				"command": "cmd.gerrit.nextUnresolvedComment",
-				"title": "%commands.nextUnresolvedComment%",
+				"title": "Gerrit: Next Unresolved Comment",
 				"icon": {
 					"dark": "src/images/icons/comment-down-dark.svg",
 					"light": "src/images/icons/comment-down-light.svg"
@@ -309,19 +314,19 @@
 			},
 			{
 				"command": "cmd.gerrit.openChangeSelector",
-				"title": "%commands.openChangeSelector%"
+				"title": "Gerrit: Open Change Selector"
 			},
 			{
 				"command": "cmd.gerrit.checkoutChange",
-				"title": "%commands.checkoutChange%"
+				"title": "Gerrit: Checkout change by ID or number"
 			},
 			{
 				"command": "cmd.gerrit.openCurrentOnline",
-				"title": "%commands.openCurrentOnline%"
+				"title": "Gerrit: Open Current Change Online"
 			},
 			{
 				"command": "cmd.gerrit.previousUnresolvedComment",
-				"title": "%commands.previousUnresolvedComment%",
+				"title": "Gerrit: Previous Unresolved Comment",
 				"icon": {
 					"dark": "src/images/icons/comment-up-dark.svg",
 					"light": "src/images/icons/comment-up-light.svg"
@@ -329,43 +334,48 @@
 			},
 			{
 				"command": "cmd.gerrit.pushForReview",
-				"title": "%commands.pushForReview%",
+				"title": "Gerrit: Push for Review",
+				"icon": "$(git-commit)"
+			},
+			{
+				"command": "cmd.gerrit.pushForReviewDirect",
+				"title": "Gerrit: Push for Review (Direct)",
 				"icon": "$(git-commit)"
 			},
 			{
 				"command": "cmd.gerrit.refreshChanges",
-				"title": "%commands.refreshChanges%",
+				"title": "Gerrit: Refresh changes",
 				"icon": "$(refresh)"
 			},
 			{
 				"command": "cmd.gerrit.resetPatchsetSelection",
-				"title": "%commands.resetPatchsetSelection%"
+				"title": "Gerrit: Reset Patchset Selection"
 			},
 			{
 				"command": "cmd.gerrit.search",
-				"title": "%commands.search%",
+				"title": "Gerrit: Search",
 				"icon": "$(search)"
 			},
 			{
 				"command": "cmd.gerrit.selectActiveView",
-				"title": "%commands.selectActiveView%",
+				"title": "Gerrit: Select Active View",
 				"icon": "$(menu)"
 			},
 			{
 				"command": "cmd.gerrit.dropQuickCheckouts",
-				"title": "%commands.dropQuickCheckouts%"
+				"title": "Gerrit: Drop Quick Checkout stashes"
 			},
 			{
 				"command": "cmd.gerrit.openFileOnGitiles",
-				"title": "%commands.openFileOnGitiles%"
+				"title": "Gerrit: Open file on Gitiles"
 			},
 			{
 				"command": "cmd.gerrit.openLineOnGitiles",
-				"title": "%commands.openLineOnGitiles%"
+				"title": "Gerrit: Open line on Gitiles"
 			},
 			{
 				"command": "cmd.gerrit.openLineOnGitilesPermalink",
-				"title": "%commands.openLineOnGitilesPermalink%"
+				"title": "Gerrit: Open line on Gitiles (permalink)"
 			}
 		],
 		"keybindings": [
@@ -521,6 +531,10 @@
 					"when": "false"
 				},
 				{
+					"command": "gerrit.pushForReviewDirect",
+					"when": "false"
+				},
+				{
 					"command": "gerrit.rebase",
 					"when": "false"
 				},
@@ -638,6 +652,10 @@
 				},
 				{
 					"command": "cmd.gerrit.pushForReview",
+					"when": "true"
+				},
+				{
+					"command": "cmd.gerrit.pushForReviewDirect",
 					"when": "true"
 				},
 				{
@@ -1009,58 +1027,58 @@
 		],
 		"configuration": {
 			"type": "object",
-			"title": "%configuration.title%",
+			"title": "Gerrit",
 			"properties": {
 				"gerrit.streamEvents": {
 					"type": "boolean",
-					"title": "%configuration.streamEvents%",
+					"title": "Enable listening for events by SSH'ing to Gerrit",
 					"description": "Enable listening for events by SSH'ing to Gerrit. See https://gerrit-review.googlesource.com/Documentation/cmd-stream-events.html for more info",
 					"default": false
 				},
 				"gerrit.messages.postReviewNotification": {
 					"type": "boolean",
-					"title": "%configuration.postReviewNotification%",
+					"title": "Show notification after running `git review`",
 					"description": "Show notification after running `git review` that allows you to either open the change online or in the review panel",
 					"default": true
 				},
 				"gerrit.quickCheckout.dropAllStashes": {
 					"type": "boolean",
-					"title": "%configuration.dropAllStashes%",
+					"title": "Drop all git stashes after dropping quick checkouts",
 					"description": "Drop all git stashes after dropping quick checkouts as well"
 				},
 				"gerrit.quickCheckout.showInStatusBar": {
 					"type": "boolean",
-					"title": "%configuration.showInStatusBar%",
+					"title": "Show quick checkouts in statusbar",
 					"description": "Whether quick checkout stashes should be shown in the statusbar for quick access"
 				},
 				"gerrit.auth.username": {
 					"type": "string",
-					"title": "%configuration.username%",
+					"title": "Gerrit username",
 					"description": "Gerrit login username"
 				},
 				"gerrit.auth.password": {
 					"type": "string",
-					"title": "%configuration.password%",
+					"title": "Gerrit HTTP password",
 					"description": "Not recommended: stored in plain text in settings. Prefer the command \"Gerrit: Enter credentials\" so the password is stored securely. This setting is still supported for scenarios where the command is not practical (e.g. devcontainers)."
 				},
 				"gerrit.auth.cookie": {
 					"type": "string",
-					"title": "%configuration.cookie%",
+					"title": "Gerrit access token (or authentication cookie)",
 					"description": "Not recommended: stored in plain text in settings. Prefer the command \"Gerrit: Enter credentials\" so the value is stored securely. This can be the access token from Gerrit Settings → HTTP Credentials or the GerritAccount cookie. This setting is still supported for scenarios where the command is not practical (e.g. devcontainers)."
 				},
 				"gerrit.extraCookies": {
 					"type": "object",
-					"title": "%configuration.extraCookies%",
+					"title": "Extra Gerrit cookies",
 					"description": "Other cookies besides the authentication cookie to send on every request"
 				},
 				"gerrit.auth.url": {
 					"type": "string",
-					"title": "%configuration.authUrl%",
+					"title": "URL of the gerrit server to use",
 					"description": "URL of the gerrit server to use (inferred from `.gitreview` if not provided). Uses HTTPS if no scheme is provided"
 				},
 				"gerrit.selectedView": {
 					"type": "string",
-					"title": "%configuration.selectedView%",
+					"title": "Active changes view",
 					"description": "Active changes view, one of the titles in \"gerrit.changesViews\"",
 					"default": "Dashboard"
 				},
@@ -1121,12 +1139,12 @@
 				},
 				"gerrit.changesViews": {
 					"type": "array",
-					"title": "%configuration.changesViews%",
+					"title": "Changes views",
 					"description": "A set of changes views. You can choose the currently selected view in the CHANGES view",
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"title": "%configuration.view%",
+						"title": "View",
 						"description": "A single changes view similar to your Gerrit dashboard",
 						"required": [
 							"title",
@@ -1139,11 +1157,11 @@
 							},
 							"panels": {
 								"type": "array",
-								"title": "%configuration.panels%",
+								"title": "Panels",
 								"description": "Panels in a changes view",
 								"items": {
 									"type": "object",
-									"title": "%configuration.pane%",
+									"title": "Pane",
 									"description": "One pane in the changes view. These can be collapsed or expanded",
 									"required": [
 										"title",
@@ -1152,39 +1170,39 @@
 									"properties": {
 										"title": {
 											"type": "string",
-											"title": "%configuration.paneTitle%"
+											"title": "Title of the pane"
 										},
 										"refreshInterval": {
 											"type": "number",
-											"title": "%configuration.refreshInterval%",
+											"title": "Refresh interval (in seconds)",
 											"description": "Interval at which the entire pane is refreshed. Use 0 for no auto-refreshing",
 											"default": 300
 										},
 										"defaultCollapsed": {
 											"type": "boolean",
-											"title": "%configuration.defaultCollapsed%",
+											"title": "Whether this pane should be collapsed by default",
 											"default": false
 										},
 										"initialFetchCount": {
 											"type": "number",
-											"title": "%configuration.initialFetchCount%",
+											"title": "Fetch count",
 											"description": "How many entries to fetch initially",
 											"default": 25
 										},
 										"extraEntriesFetchCount": {
 											"type": "number",
-											"title": "%configuration.extraEntriesFetchCount%",
+											"title": "Extra entries to fetch",
 											"description": "Extra entries to fetch on clicking \"fetch more\"",
 											"default": 25
 										},
 										"filters": {
 											"type": "array",
-											"title": "%configuration.filters%",
+											"title": "Filters",
 											"description": "Filters to apply to the search, see Gerrit docs: https://gerrit-review.googlesource.com/Documentation/user-search.html",
 											"minItems": 1,
 											"items": {
 												"type": "string",
-												"title": "%configuration.filter%",
+												"title": "Filter",
 												"description": "Gerrit filter to use. See Gerrit docs: https://gerrit-review.googlesource.com/Documentation/user-search.html"
 											},
 											"default": [
@@ -1411,19 +1429,19 @@
 				},
 				"gerrit.allowInvalidSSLCerts": {
 					"type": "boolean",
-					"title": "%configuration.allowInvalidSSLCerts%",
+					"title": "Allow requests to failed/invalid SSL certs",
 					"description": "Note: before you use this, ask your server maintainer to fix their certs. This option can can be dangerous.",
 					"default": false
 				},
 				"gerrit.customAuthUrlPrefix": {
 					"type": "string",
-					"title": "%configuration.customAuthUrlPrefix%",
+					"title": "Add a custom prefix to use for authenticated links",
 					"description": "Changes the default authentication prefix from \"a/\" to a custom string. This should only be necessary if using a non-standard gerrit instance.",
 					"default": "a/"
 				},
 				"gerrit.pushForReviewArgs": {
 					"type": "array",
-					"title": "%configuration.pushForReviewArgs%",
+					"title": "Arguments to pass to the git-review tool",
 					"description": "Arguments to pass to the git-review tool. See https://linux.die.net/man/1/git-review for more info",
 					"default": [],
 					"items": {

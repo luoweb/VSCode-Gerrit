@@ -44,6 +44,11 @@ import {
 	previousUnresolvedComment,
 } from '../providers/comments/commentCommands';
 import { CanFetchMoreTreeProvider } from '../views/activityBar/shared/canFetchMoreTreeProvider';
+import {
+	getChangeIDFromCheckoutString,
+	gitReview,
+	gitPushForReview,
+} from '../lib/git/git';
 import { fetchMoreTreeItemEntries } from '../views/activityBar/changes/fetchMoreTreeItem';
 import { openCurrentChangeOnline } from '../lib/commandHandlers/openCurrentChangeOnline';
 import { clearSearchResults, search } from '../views/activityBar/search/search';
@@ -51,7 +56,6 @@ import { ChangeTreeView } from '../views/activityBar/changes/changeTreeView';
 import { QuickCheckoutTreeEntry } from '../views/activityBar/quickCheckout';
 import { listenForStreamEvents } from '../lib/stream-events/stream-events';
 import { GerritCommentBase } from '../lib/gerrit/gerritAPI/gerritComment';
-import { getChangeIDFromCheckoutString, gitReview, gitPushForReview } from '../lib/git/git';
 import { createAutoRegisterCommand } from 'vscode-generate-package-json';
 import { enterCredentials } from '../lib/credentials/enterCredentials';
 import { rebaseOntoParent, recursiveRebase } from '../lib/git/rebase';
@@ -436,28 +440,34 @@ export function registerCommands(
 		)
 	);
 	context.subscriptions.push(
-		registerCommand(GerritExtensionCommands.PUSH_FOR_REVIEW_DIRECT, async () => {
-			// 询问用户是否指定分支名
-			const branchName = await window.showInputBox({
-				title: 'Push for Review',
-				placeHolder: 'Enter target branch name (leave empty to use current branch)',
-				prompt: 'Branch name for Gerrit review',
-			});
-			
-			// 询问用户是否需要输入推送选项
-			const pushOptionsInput = await window.showInputBox({
-				title: 'Push Options',
-				placeHolder: 'Enter push options separated by spaces (e.g., --code-review=2 --verified=1)',
-				prompt: 'Push options for Gerrit review',
-			});
-			
-			// 解析推送选项
-			const pushOptions = pushOptionsInput && pushOptionsInput.trim() 
-				? pushOptionsInput.trim().split(' ')
-				: undefined;
-			
-			await gitPushForReview(gerritRepo, branchName, pushOptions);
-		})
+		registerCommand(
+			GerritExtensionCommands.PUSH_FOR_REVIEW_DIRECT,
+			async () => {
+				// 询问用户是否指定分支名
+				const branchName = await window.showInputBox({
+					title: 'Push for Review',
+					placeHolder:
+						'Enter target branch name (leave empty to use current branch)',
+					prompt: 'Branch name for Gerrit review',
+				});
+
+				// 询问用户是否需要输入推送选项
+				const pushOptionsInput = await window.showInputBox({
+					title: 'Push Options',
+					placeHolder:
+						'Enter push options separated by spaces (e.g., --code-review=2 --verified=1)',
+					prompt: 'Push options for Gerrit review',
+				});
+
+				// 解析推送选项
+				const pushOptions =
+					pushOptionsInput && pushOptionsInput.trim()
+						? pushOptionsInput.trim().split(' ')
+						: undefined;
+
+				await gitPushForReview(gerritRepo, branchName, pushOptions);
+			}
+		)
 	);
 
 	// Quick-checkout

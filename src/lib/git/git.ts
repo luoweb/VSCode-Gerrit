@@ -575,7 +575,7 @@ export async function gitPushForReview(
 		'gerrit.messages.postReviewNotification',
 		true
 	);
-	
+
 	const { success, stdout, stderr } = await window.withProgress<{
 		success: boolean;
 		stdout: string;
@@ -592,9 +592,9 @@ export async function gitPushForReview(
 				message: 'Preparing push',
 				increment: 10,
 			});
-			
+
 			const uri = gerritRepo.rootUri.fsPath;
-			
+
 			// 确保工作区干净
 			if (!(await ensureCleanWorkingTree(uri))) {
 				return {
@@ -603,12 +603,12 @@ export async function gitPushForReview(
 					stderr: 'Working tree is not clean',
 				};
 			}
-			
+
 			progress.report({
 				message: 'Getting current branch',
 				increment: 30,
 			});
-			
+
 			// 获取当前分支名
 			const currentBranch = await getCurrentBranch(gerritRepo);
 			if (!currentBranch) {
@@ -618,20 +618,23 @@ export async function gitPushForReview(
 					stderr: 'Failed to get current branch',
 				};
 			}
-			
+
 			// 确定推送目标分支
 			const targetBranch = branchName || currentBranch;
-			
+
 			// 构建推送选项字符串
-			const pushOptionsString = pushOptions && pushOptions.length > 0 
-				? pushOptions.map(option => `--push-option=${option}`).join(' ')
-				: '';
-			
+			const pushOptionsString =
+				pushOptions && pushOptions.length > 0
+					? pushOptions
+							.map((option) => `--push-option=${option}`)
+							.join(' ')
+					: '';
+
 			progress.report({
 				message: `Pushing to refs/for/${targetBranch}`,
 				increment: 60,
 			});
-			
+
 			// 执行 git push 命令
 			const result = await tryExecAsync(
 				`git push --progress ${pushOptionsString} "origin" HEAD:refs/for/${targetBranch}`,
@@ -640,11 +643,11 @@ export async function gitPushForReview(
 					timeout: 30000,
 				}
 			);
-			
+
 			progress.report({
 				increment: 100,
 			});
-			
+
 			return {
 				success: result.success,
 				stdout: result.stdout,
@@ -652,17 +655,17 @@ export async function gitPushForReview(
 			};
 		}
 	);
-	
+
 	if (success) {
 		const config = getConfiguration();
 		if (!config.get('gerrit.messages.postReviewNotification', true)) {
 			return;
 		}
-		
+
 		const URL_REGEX = /http(s)?[:\w./+]+/g;
 		const url = stdout.match(URL_REGEX)?.[0];
 		const disableMessageOption = 'Disable This Message';
-		
+
 		if (url) {
 			const viewRemoteOption = 'View Remote';
 			const openReviewPanelOption = 'Open Review Panel';
@@ -672,7 +675,7 @@ export async function gitPushForReview(
 				openReviewPanelOption,
 				disableMessageOption
 			);
-			
+
 			if (result === viewRemoteOption) {
 				await env.openExternal(Uri.parse(url));
 			} else if (result === openReviewPanelOption) {
