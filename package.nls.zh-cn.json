@@ -1,6 +1,6 @@
 {
-	"displayName": "Gerrit",
-	"description": "VSCode Gerrit 代码审查集成",
+	"displayName": "质检智能体",
+	"description": "VSCode代码审查集成",
 	"commands.changeGitRepo": "切换 Git 仓库",
 	"commands.maybeDiff": "可能的差异",
 	"commands.ackCommentThread": "确认",
